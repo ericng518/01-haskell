@@ -112,7 +112,7 @@ doubleEveryOther (x:y:xs) = x : (2*y) : doubleEveryOther xs --construct and oper
 -- 36
 
 sumList :: [Integer] -> Integer
-sumList [] = []
+sumList [] = 0
 sumList (x:xs) = x + sumList xs
 
 
@@ -125,4 +125,4 @@ sumList (x:xs) = x + sumList xs
 -- False
 
 validateCardNumber :: Integer -> Bool
-validateCardNumber n = (sumList (digitsOfInts (doubleEveryOther (listReverse (digitsOfInt n)))) 'mod' 10) == 0
+validateCardNumber n = (sumList (digitsOfInts (doubleEveryOther (listReverse (digitsOfInt n)))) `mod` 10) == 0

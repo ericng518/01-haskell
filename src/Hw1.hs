@@ -29,7 +29,8 @@ import Prelude  hiding (replicate, sum, reverse)
 -- []
 
 listReverse :: [a] -> [a]
-listReverse xs = error "TBD:listReverse"
+listReverse [] = []
+listReverse (x:xs) = listReverse xs ++ [x]
 
 
 -- | Determine whether a string is a palindrome (i.e. spelled the same
@@ -45,7 +46,7 @@ listReverse xs = error "TBD:listReverse"
 -- True
 
 palindrome :: String -> Bool
-palindrome w = error "TBD:palindrome"
+palindrome w = w == listReverse w
 
 
 -- | `digitsOfInt n` should return `[]` if `n` is not positive,
@@ -62,7 +63,8 @@ palindrome w = error "TBD:palindrome"
 -- []
 
 digitsOfInt :: Integer -> [Integer]
-digitsOfInt n = error "TBD:digitsOfInt"
+digitsOfInt n = 
+    
 
 
 -- | `digitsOfInts xs` should return a list containing all of the digits

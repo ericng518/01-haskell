@@ -1,1 +1,1 @@
-I use Andrew Gibiansky's Intro to Haskell Syntax in the doing of this assignment.
+I use Andrew Gibiansky's Intro to Haskell Syntax and Introduction To Haskell Built-In Functions in the doing of this assignment.

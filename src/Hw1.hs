@@ -29,7 +29,7 @@ import Prelude  hiding (replicate, sum, reverse)
 -- []
 
 listReverse :: [a] -> [a]
-listReverse [] = []
+listReverse [] = [] -- for the end
 listReverse (x:xs) = listReverse xs ++ [x]
 
 
@@ -63,7 +63,9 @@ palindrome w = w == listReverse w
 -- []
 
 digitsOfInt :: Integer -> [Integer]
-digitsOfInt n = 
+digitsOfInt n
+    | n <= 0 = []
+    | otherwise = digitsOfInt (n `div` 10) ++ [n `mod` 10] --infix, makes more sense in my mind
     
 
 
@@ -77,7 +79,8 @@ digitsOfInt n =
 -- []
 
 digitsOfInts :: [Integer] -> [Integer]
-digitsOfInts xs = error "TBD:digitsOfInts"
+digitsOfInts [] = []
+digitsOfInts (x:xs) = digitsOfInt x ++ digitsOfInts xs
 
 
 -- | Doubles every other integer in a list,
@@ -93,8 +96,9 @@ digitsOfInts xs = error "TBD:digitsOfInts"
 -- []
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther xs = error "TBD:doubleEveryOther"
-
+doubleEveryOther [] = [] -- for empty or end
+doubleEveryOther [x] = [x] -- for one thing or tail bit
+doubleEveryOther (x:y:xs) = x : (2*y) : doubleEveryOther xs --construct and operate on list
 
 -- | Sum the elements of a list
 --
@@ -108,7 +112,8 @@ doubleEveryOther xs = error "TBD:doubleEveryOther"
 -- 36
 
 sumList :: [Integer] -> Integer
-sumList xs = error "TBD:sumList"
+sumList [] = []
+sumList (x:xs) = x + sumList xs
 
 
 -- | Validate a credit card number
@@ -120,4 +125,4 @@ sumList xs = error "TBD:sumList"
 -- False
 
 validateCardNumber :: Integer -> Bool
-validateCardNumber = error "TBD:validateCardNumber"
+validateCardNumber n = (sumList (digitsOfInts (doubleEveryOther (listReverse (digitsOfInt n)))) 'mod' 10) == 0

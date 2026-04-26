@@ -1,0 +1,1 @@
+I use Andrew Gibiansky's Intro to Haskell Syntax in the doing of this assignment.
